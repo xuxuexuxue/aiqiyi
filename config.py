@@ -16,7 +16,7 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
     # redis配置
-    REDIS_HOST = "127.0.0.1"
+    REDIS_HOST = "10.0.0.11"
     REDIS_PORT = 6379
 
     # session 配置
