@@ -1,8 +1,12 @@
 import logging
 
+
 from flask import Flask,session
 from flask import Response
-from flask import current_app
+
+
+from flask import current_app, render_template
+
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 from info import db, create_app
@@ -18,7 +22,19 @@ manager.add_command('db', MigrateCommand)
 
 
 
+# @app.route('/index')
+# def index():
+#     # logging.debug("This is a debug log.")
+#     current_app.logger.debug('debug')
+#     return 'index'
+
+
+# @app.route('/')
+# @app.route('/index')
+# def movie_index():
+#     return render_template('aiqiyi_movie/index.html')
+
+
 
 if __name__ == '__main__':
     manager.run()
-    #app.run()
