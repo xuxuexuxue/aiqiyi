@@ -1,3 +1,5 @@
+from flask import render_template
+
 from info import redis_store
 from info.modules.index import index_blu
 
@@ -5,6 +7,6 @@ from info.modules.index import index_blu
 # 2.蓝图注册路由
 @index_blu.route('/')
 def index():
-    # 向redis中保存一个值name xuxue
+    # 向redis中保存一个值names
     redis_store.set("name", "it")
-    return 'hello'
+    return render_template("aiqiyi/index.html")

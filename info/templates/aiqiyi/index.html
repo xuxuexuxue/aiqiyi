@@ -4,7 +4,7 @@
     <script src="../../static/js/x.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>好看的电影大全-电影排行榜-爱奇艺</title>
+    <title>爱奇艺</title>
     <meta name="description" content="好看的电影大全，电影排行榜，爱奇艺提供全网热门丰富的电影，欢迎在线观看。">
 
     <link rel="shortcut icon" href="http://www.iqiyipic.com/common/images/logo.ico" type="image/icon">
@@ -120,7 +120,7 @@
                         </div>
                         <!--nav animation 20130731 jin-->
                         <!--<div class="guide-light"></div><div class="guide-light-hover"  data-navAnim-elem="mask"></div><div class="guide_slipNav" data-navanim-elem="word" data-navanim-param="原创" style="right: 0px;">原创</div>
-			<!-- guide Start -->
+			            <!-- guide Start -->
                         <div class="ydBox" data-widget-navctrl-elem="tip">
                             <div class="gtips-bg"></div>
                             <div class="gtips-txt"><p><span rseat="更多频道内容在这里查看">更多频道内容在这里查看</span><a
@@ -4101,57 +4101,57 @@ rseat="人人登录"&gt;人人登录&lt;/span&gt;&lt;/a&gt;
  class="integral-item"&gt;&lt;div class="task"&gt;&lt;span
 class="integral-icons item-icon sign"&gt;&lt;/span&gt;&lt;div
 class="task-title"&gt;签到&lt;span class="task-tips"&gt;&lt;em
-class="tasktip"&gt;+{{data.signScore}}分&lt;/em&gt;&lt;/span&gt;&lt;/div&
+class="tasktip"&gt;+{{ data.signScore }}分&lt;/em&gt;&lt;/span&gt;&lt;/div&
 gt;&lt;p class="task-desc"&gt;完成&lt;span class="task-dc"
-j-role="signCount"&gt;{{data.signCount}}&lt;/span&gt;/1&lt;/p&gt;{{if
-data.signCount &amp;&amp; data.signCount != 0}}&lt;div
+j-role="signCount"&gt;{{ data.signCount }}&lt;/span&gt;/1&lt;/p&gt;{{ if
+                                        data.signCount &amp;&amp; data.signCount != 0}}&lt;div
 class="integral-opt"&gt;&lt;span class="integral-icons
-status-done"&gt;&lt;/span&gt;&lt;/div&gt;{{else}}&lt;div
+status-done"&gt;&lt;/span&gt;&lt;/div&gt;{{ else }}&lt;div
 class="integral-opt" j-role="notSign"&gt;&lt;a href="#"
 class="integral-btn" j-role="signBtn"
-data-task-signScore="{{data.signScore}}" data-score="{{data.signScore}}"
+data-task-signScore="{{ data.signScore }}" data-score="{{ data.signScore }}"
  rseat="801041_signup_inpanel" &gt;签到&lt;/a&gt;&lt;span
 class="integral-icons status-done" style="display: none;"
 j-role="signDone"&gt;&lt;/span&gt;&lt;/div&gt;{{/if}}&lt;span
 class="add-points-tips" style="display:none;"
-j-role="animationSign"&gt;+{{data.signScore}}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div
+j-role="animationSign"&gt;+{{ data.signScore }}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div
  class="integral-item"&gt;&lt;div class="task"&gt;&lt;span
 class="integral-icons item-icon paopao"&gt;&lt;/span&gt;&lt;div
 class="task-title"&gt;访问泡泡首页&lt;span class="task-tips"&gt;&lt;em
-class="tasktip"&gt;+{{data.rewardScore}}分&lt;/em&gt;&lt;/span&gt;&lt;
+class="tasktip"&gt;+{{ data.rewardScore }}分&lt;/em&gt;&lt;/span&gt;&lt;
 /div&gt;&lt;p class="task-desc"&gt;完成&lt;span class="task-dc"
-j-role="paopaoCount"&gt;{{if data.rewardCount &amp;&amp;
-data.rewardCount != 0 &amp;&amp; data.getRewardDayCount !=
-0}}1{{else}}0{{/if}}&lt;/span&gt;/1&lt;/p&gt;{{if data.rewardCount
-&amp;&amp; data.rewardCount != 0 &amp;&amp; data.getRewardDayCount !=
-0}}&lt;div class="integral-opt"&gt;&lt;span class="integral-icons
-status-done"&gt;&lt;/span&gt;&lt;/div&gt;{{else}}&lt;div
+j-role="paopaoCount"&gt;{{ if data.rewardCount &amp;&amp;
+                                        data.rewardCount != 0 &amp;&amp; data.getRewardDayCount !=
+                                        0}}1{{ else }}0{{/if}}&lt;/span&gt;/1&lt;/p&gt;{{ if data.rewardCount
+                                        &amp;&amp; data.rewardCount != 0 &amp;&amp; data.getRewardDayCount !=
+                                        0}}&lt;div class="integral-opt"&gt;&lt;span class="integral-icons
+status-done"&gt;&lt;/span&gt;&lt;/div&gt;{{ else }}&lt;div
 class="integral-opt" j-role="notPaopao"&gt;&lt;a
 href="//www.iqiyi.com/paopao" class="integral-btn" j-role="paopaoBtn"
-rseat="{{if data.rewardCount &amp;&amp; data.rewardCount != 0 &amp;&amp;
- data.getRewardDayCount ==
-0}}803141_paoget{{else}}801041_go_inpanel{{/if}}"data-task-paoScore="{{data.rewardScore}}"
- data-score="{{data.rewardScore}}"
-data-pao-rewardCount="{{data.rewardCount}}" target="_blank"
-rseat="803141_pao"&gt;{{if data.rewardCount &amp;&amp; data.rewardCount
-!= 0 &amp;&amp; data.getRewardDayCount == 0}} 去领取 {{else}} 去逛逛
+rseat="{{ if data.rewardCount &amp;&amp; data.rewardCount != 0 &amp;&amp;
+                                        data.getRewardDayCount ==
+                                        0}}803141_paoget{{ else }}801041_go_inpanel{{/if}}"data-task-paoScore="{{ data.rewardScore }}"
+ data-score="{{ data.rewardScore }}"
+data-pao-rewardCount="{{ data.rewardCount }}" target="_blank"
+rseat="803141_pao"&gt;{{ if data.rewardCount &amp;&amp; data.rewardCount
+                                        != 0 &amp;&amp; data.getRewardDayCount == 0}} 去领取 {{ else }} 去逛逛
 {{/if}}&lt;/a&gt;&lt;span class="integral-icons status-done"
 style="display: none;"
 j-role="paopaoDone"&gt;&lt;/span&gt;&lt;/div&gt;{{/if}}&lt;span
 class="add-points-tips" style="display:none;"
-j-role="animationPaopao"&gt;+{{data.rewardScore}}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div
+j-role="animationPaopao"&gt;+{{ data.rewardScore }}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div
  class="integral-item"&gt;&lt;div class="task"&gt;&lt;span
 class="integral-icons item-icon watch"&gt;&lt;/span&gt;&lt;div
 class="task-title"&gt;每观看视频30分钟&lt;span class="task-tips"&gt;&lt;em
-class="tasktip"&gt;+{{data.viewScore}}分&lt;/em&gt;&lt;/span&gt;&lt;/div&
+class="tasktip"&gt;+{{ data.viewScore }}分&lt;/em&gt;&lt;/span&gt;&lt;/div&
 gt;&lt;p class="task-desc"&gt;完成&lt;span class="task-dc"
-j-role="viewCount"&gt;{{data.viewCount}}&lt;/span&gt;/3&lt;/p&gt;{{if
-data.viewCount &amp;&amp; data.viewCount != "0" &amp;&amp;
-data.viewCount != "1" &amp;&amp; data.viewCount != "2"}}&lt;div
+j-role="viewCount"&gt;{{ data.viewCount }}&lt;/span&gt;/3&lt;/p&gt;{{ if
+                                        data.viewCount &amp;&amp; data.viewCount != "0" &amp;&amp;
+                                        data.viewCount != "1" &amp;&amp; data.viewCount != "2"}}&lt;div
 class="integral-opt"&gt;&lt;span class="integral-icons
-status-done"&gt;&lt;/span&gt;&lt;/div&gt;{{else}}&lt;div
+status-done"&gt;&lt;/span&gt;&lt;/div&gt;{{ else }}&lt;div
 class="integral-opt"&gt;&lt;a href="//www.iqiyi.com/u/record"
-class="integral-btn" data-score="{{data.viewScore}}"
+class="integral-btn" data-score="{{ data.viewScore }}"
 rseat="803141_record_inpanel" target="_blank"&gt;去观看&lt;/a&gt;&lt;span
 class="integral-icons status-done" style="display:
 none;"&gt;&lt;/span&gt;&lt;/div&gt;{{/if}}&lt;/div&gt;&lt;/div&gt;&lt;a
