@@ -9,7 +9,9 @@ from flask_session import Session
 from config import config
 
 
-db = SQLAlchemy() # 对于Flask中的很多扩展来说 都可先初始化扩展对象 然后再调用app_init去初始化
+db = SQLAlchemy()  # 对于Flask中的很多扩展来说 都可先初始化扩展对象 然后再调用app_init去初始化
+redis_store = None  # type: StrictRedis # python3.6后的变量注释 可让其出现智能提示
+
 
 
 def setup_log(config_name):
@@ -36,11 +38,17 @@ def create_app(config_name):
     app.config.from_object(config[config_name])
     # 配置数据库
     db.init_app(app)
-    # 配置redis
+    # 配置redis存储对象
+    global redis_store
     redis_store = redis.StrictRedis(host=config[config_name].REDIS_HOST, port=config[config_name].REDIS_PORT)
     # 开启csrf保护
     CSRFProtect(app)
     # 设置session保存位置
     Session(app)
+
+
+    # 注册蓝图到app上
+    from info.modules.index import index_blu
+    app.register_blueprint(index_blu)
 
     return app
