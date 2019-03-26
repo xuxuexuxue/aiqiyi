@@ -8,8 +8,11 @@ from flask import current_app, render_template
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 from info import db, create_app
+from info import models
 
 # 通过指定配置名字创建对应配置的app
+
+
 app = create_app('development')
 # Flask-script添加使用命令行
 manager = Manager(app)
