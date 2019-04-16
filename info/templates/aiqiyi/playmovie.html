@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {{data.name}}-电影-高清完整版视频在线观看–爱奇艺</title>
+    <link rel="shortcut icon" href="http://www.qiyipic.com/common/images/logo.ico" type="image/icon" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/v3-basic_new.css" />
+    <link href="../../static/css/play-base.css"rel="stylesheet" type="text/css">
+    <link href="../../static/css/play-movie.css"rel="stylesheet" type="text/css">
+
+</head>
+<body>
+	<div class="playerMain_bg">
+		<!-- 播放器区 start -->
+		<div data-pb="tmplt=longmovietplt" data-block-name="播放器" id="block-B">
+			<div class="flashMovie_channel">
+				<div id="flashArea" class="flashArea">
+					<div id="jujiPlayWrap">
+						<div class="container pt10 padplay" style="position: relative;">
+							<iframe width="100%" height="550px;" allowTransparency="true" id="movieFrame"
+							 frameborder="0" scrolling="no"
+							 src="{{data.mov_url}}">
+							 </iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 播放器区 end -->
+		<!-- 标题区 start -->
+		<div class="mod-breadcrumb">
+			<div class="wrapper wrapper-dianying">
+				<div class="clearfix">
+					<div class="wrapper-left">
+						<div class="mod-breadcrumb_left">
+							<div class="mod-play-tits clearfix">
+								<!-- 电影名 -->
+								<h1 class="mod-play-tit">
+									<span id="widget-videotitle">{{data.name}}</span> <span class="score"
+										id="playerAreaScore" data-score-wrap="score"
+										data-score-tvid="264628300"><span class="num"
+										data-score-num="1"></span><em data-score-num="2">{{data.score}}</em>
+									</span>
+								</h1>
+							</div>
+							<div class="mod-crumb_ft clearfix">
+								<div class="mod-crumb_bar">
+									<span class="mod-play_tags" id="datainfo-navlist"
+										data-page-version="pcwdev30"> <a rseat="bread2_1"
+										class="c999" title="首页" href="/movielist/">首页</a>
+									</span>
+									<span class="mod-tags_item" id="datainfo-taglist">
+                                        {% if data.category != "" %}
+                                            {% for i in range(0,3) %}
+                                            <a href="/movielist/?cid={{ data.cat_id[i] }}" title="{{data.category[i]}}" id='thirdPartyTagList'>{{data.category[i]}}</a>
+                                        {% endfor %}
+                                        {% endif %}
+
+
+									</span>
+								</div>
+								<!-- 解析地址 -->
+								<select style="width:100px;float:right" onchange="changeUrl(this)">
+
+                                {% for url in urlList %}
+                                	<option value="{{ url }}">解析地址{{ loop.index0 }}</option>
+                                {% endfor %}
+								</select>
+								<!-- 电影播放隐藏地址 -->
+								<input id="movieUrl" value="{{data.url}}" type="hidden" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 简介浮层 start-->
+				<!-- 默认加dn，展示时去掉-->
+				<!-- 影片简介 -->
+				<div class="mod-crumb_pop" style="display: block;"
+					data-widget-elem="synopsisContent">
+					<div class="progInfo_pop_con clearfix">
+						<div class="fl progInfo_pic">
+							<a href="javascript:;" class="progInfo_pic_link disabled"><img
+								width="100%" height="100%"
+								src="{{data.imagePath}}"
+								alt=""></a>
+						</div>
+						<div class="progInfo_txt">
+							<p class="progInfo_rtp">
+								<span class="type-tit">导演：{{ data.director }}</span> <span class="type-con">
+
+								</span>
+							</p>
+
+							<p class="progInfo_rtp">
+								<span class="type-tit">主演：</span> <span class="type-con">
+								{% if data.performer != None %}
+                                <a href="/performerdetail?name={{data.performer}}"
+											target="_blank" title="{{data.performer}}">{{data.performer}}</a>
+
+                                {% endif %}
+								</span>
+							</p>
+
+							<p class="progInfo_tag" id="data-videopoint"
+								data-qipuid="264628300" data-area="azalea" data-numshow="6"data-numlimit="10" data-elem-nochange="true">
+								<span class="type-tit">看点：</span>
+                                {% if data.des != None %}
+								    {% for i in data.des %}
+                                <span class="type-con" id="data-vpointlist">
+									<!-- 看点 sql使用模糊精准匹配,后期可以做词云，这里不实现了 -->
+										<a target="_blank" title="{{i}}" href="#">{{i}}</a>
+                                {% endfor %}
+								{% endif %}
+
+							</p>
+
+							<p class="progInfo_intr " data-elem-ishide="true"
+								id="data-videoInfoDes-wrap">
+								<span class="type-tit">简介：</span> <span class="type-con"
+									data-elem-iscut="true" id="data-videoInfoDes">
+									<!-- 简介 -->
+									{{data.keyword}}
+								</span>
+							</p>
+
+						</div>
+					</div>
+				</div>
+				<!-- 短视频简介浮层 end-->
+
+			</div>
+		</div>
+		<!-- 标题区 end-->
+	</div>
+	<!-- 内容区 -->
+	<div class="wrapper wrapper-dianying" data-content-wrapper="wrapper">
+		<div style="display: none;" id="check-is-movie-tpl"></div>
+		<div data-pb="tmplt=longmovietplt" data-relate-widget="relateMovie" data-anchor-elem="relatedvideo" id="block-F" class="" data-asyn-pb="true">
+			<div style="display: none;" id="check-is-movie-tpl"></div>
+			<div data-role-from="guests,hosts" data-qiyu-hookup=""
+				class="wrapper-piclist widget-realteactorstab widget-relateRoles mt20 "
+				data-tabname="relateactors" data-widget-hover="true" id="widget-qiyu-zebra">
+				<!-- 角色模块 -->
+				<div class="mod-role-con" data-widget-follow="related" data-ext="1"
+					data-opt-param="agentType=201&amp;followfrm=1502042_ply">
+					<ul class="mod-role-tab play-title clearfix">
+                        {% if data.performer != None %}
+                            {% for i in data.performer %}
+                                <!-- 演员 -->
+							<li class="role-item1 widget-actorHideResp selected"><i class="rl-ico"></i>
+								<p class="rl-pic">
+									<a href="/performerdetail?name={{i.performer}}" target="_blank" title="{{i.performer}}">
+                                        <img width="40" height="40" alt="{{i.performer}}" src="#">
+									</a>
+								</p>
+								<div class="rl-name rl-name_sub">
+									<h3>
+										<a href="/performerdetail?name={{i.performer}}"
+											title="演员"
+											target="_blank" class="rl-name_paopao">{{i.performer}}</a><i
+											class="rl-name_iconPp"></i>
+									</h3>
+									<p data-role-item="actors">主演</p>
+								</div>
+							</li>
+                            {% endfor %}
+                        {% endif %}
+
+					</ul>
+				</div>
+				<!-- 角色模块 end-->
+			</div>
+		</div>
+	</div>
+	<!-- 内容区 end-->
+	<!--js title-->
+</body>
+
+<script type="text/javascript">
+	function changeUrl(obj){
+		document.getElementById("movieFrame").src = obj.value + document.getElementById("movieUrl").value;
+	}
+</script>
+
+</body>
+</html>

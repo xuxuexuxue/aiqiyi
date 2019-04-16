@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>图片专辑详情页面</title>
+<link rel="stylesheet" type="text/css" href="../../static/mmonly/css/index.css" />
+<link href="../../static/mmonly/css/topnavcss.css" rel="stylesheet" type="text/css" />
+<link href="../../static/mmonly/css/meinv.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../static/mmonly/js/jquery.min.js"></script>
+</head>
+<body>
+{#导入头文件#}
+{% include 'mmonly/header.html' %}
+	<div class="wrapper">
+		<div class="hr10"></div>
+		<div class="photo">
+			<div class="topmbx">
+				您所在的位置 &gt; >当前位置:
+					<span>{{data.list[0].photodes}}查看</span>
+			</div>
+			<div class="wrapper clearfix imgtitle">
+				<h1>
+					{{data.list[0].photodes}}
+					<span id="picmum">
+					(<span class="nowpage">
+					{{data.current_page}}
+					</span>/<span
+						class="totalpage">{{data.total_page}}</span>)
+					</span>
+				</h1>
+				<div class="photo-opts">
+					<span class="tip"> 编辑：唯一图库 &nbsp;&nbsp;&nbsp;更新时间： {{data.list[0].createtime}}</span>
+				</div>
+				<ul class="photo-opt">
+					<li><a style="padding-left: 30px;" class="favorite"
+						href=""><span id="hits">69次</span></a></li>
+					<li><span class="swpt-tip">支持左右键翻阅图片
+					</span></li>
+				</ul>
+				<div class="gg1002"></div>
+				<div class="big-pic">
+					<div id="big-pic">
+						<p align="center">
+                            {% for i in data.list  %}
+							<a href='{{i.neturl}}'>
+							<img alt="{{i.picturedes}}"
+								src="{{i.neturl}}" />
+							</a>
+                            {% endfor %}
+						</p>
+					</div>
+				</div>
+				<div class="hr10"></div>
+				<div class="gg1002"></div>
+				<div class="pages">
+					<ul>
+						<li><a>共{{data.total_page}}页: </a></li>
+                        {% if data.current_page >1 %}
+                            <li id="pl">
+								<a href='/picdetail?p={{data.current_page - 1}}
+									&myGroupId={{data.mygroupid}}'>上一页</a>
+							</li>
+                        {% endif %}
+
+
+                        {% for p in data.paginate.iter_pages(1,1,3,1) %}
+                        {% if p %}
+                        {% if p == data.paginate.page %}
+                        <li class="thisclass"><a>{{p}}</a></li>
+                        {% else %}
+                            <li><a href='/picdetail?p={{p}}&myGroupId={{data.mygroupid}}'>{{p}}</a></li>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+
+
+                        {% if data.current_page < data.total_page %}
+							<li id="nl"><a href='/picdetail?p={{data.current_page + 1}}
+									&myGroupId={{data.mygroupid}}'>下一页</a></li>
+						{% endif %}
+					</ul>
+				</div>
+				<div class="photo-fbl">
+					<div class="fbl">
+						<span class="bt">标签</span>
+                        {% for i in data.tagdes_li %}
+                            <a target="_blank" href="/tagdetail?tag={{ i.tag }}">{{ i.tagdes }}</a>
+                        {% endfor %}
+					</div>
+					<span class="rightbaidu"> <!--分享-->
+					</span>
+				</div>
+				<div class="w960AD">
+					<div class="hr10"></div>
+				</div>
+			</div>
+		</div>
+		<div class="wrapper">
+			<div class="descriptionBox">
+				<h2>内容简介：</h2>
+				<p>{{data.list[0].picturedes}}</p>
+				<div class="c"></div>
+			</div>
+		</div>
+		<div class="wrapper" style="margin: 0 auto 10px;"></div>
+		<div class="bottom">
+		</div>
+		</div>
+</body>
+</html>

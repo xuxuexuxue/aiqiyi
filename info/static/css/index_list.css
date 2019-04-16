@@ -1,0 +1,74 @@
+.line_one{
+    position:relative;
+}
+
+.pindao{
+    position: absolute;
+    left:20px;
+    top:0px;
+
+
+}
+
+.diqu{
+    position: absolute;
+    left:20px;
+    top:20px;
+
+}
+
+.leixing{
+    position: absolute;
+    left:20px;
+    top:40px;
+}
+
+.guige{
+    position: absolute;
+    left:20px;
+    top:60px;
+}
+
+.niandai{
+    position: absolute;
+    left:20px;
+    top:80px;
+}
+
+
+
+
+
+ul{
+    float:left;
+
+}
+li{
+    list-style:none;
+    /*float:left;*/
+    font-size:12px;
+}
+
+a{
+    text-decoration: none;
+}
+
+h3{
+    font-size:14px;
+    float:left;
+
+}
+
+
+.niandai ul{
+    text-indent:-28px;
+}
+
+
+.pindao .selected{
+    background: green;
+}
+
+ul div1{
+    background: green;
+}

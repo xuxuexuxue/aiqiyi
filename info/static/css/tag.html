@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>TAG标签 - 唯一图库</title>
+{#<link rel="alternate" media="only screen and (max-width: 640px)"  href="http://m.mmonly.cc/tag/" >#}
+{#<meta name="mobile-agent" content="format=html5;url=http://m.mmonly.cc/tag/"/>#}
+<script type="text/javascript" src="../../static/js/tz.js"></script>
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="//www.mmonly.cc/skins/css/index.css" />
+<link href="../../static/css/topnavcss.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../static/js/newhead.js"></script>
+
+</head>
+<body>
+{% include 'mmonly/header.html' %}
+
+<div class="hr10"></div>
+<div class="Clbc_Game TagBox">
+  	<div class="TagTitle">
+        <h1>我爱美女标签云</h1>
+        <span>当前位置：<a href="/">唯一图库</a> > <a href="http://www.mmonly.cc/tag/">标签</a></span>
+    </div>
+     {% for j in data.categroies %}
+        <div class="hr10"></div>
+        <h2>{{ j }}</h2>
+         <div class="TagList">
+            {% for i in data.tag %}
+                {% if i.categroy == j %}
+                <a tagget="_blank" href="/tagdetail?tag={{ i.tag }}">{{i.title}}</a>
+                {% endif %}
+            {% endfor %}
+         </div>
+
+    {% endfor %}
+
+
+    </div>
+	<div class="wallcont-gg">
+    </div>
+</div>
+
+
+<div class="bottom">
+  <div class="bottom_sm">唯一图库有部分资源来源于互联网，图片版权归原作者所有，若有侵权问题敬请告知，我们会立即处理。本站图片资源如果没有特殊声明，<em>一律禁止任何形式的转载和盗用。</em></div>
+  <div class="bottom-han1c">
+
+	<div class="c"></div>
+  <a rel="nofollow" target="_blank" href="/about/about.html">关于我们</a> |
+     <a rel="nofollow" target="_blank" href="/about/lx.html">联系方式</a> |
+     <a target="_blank" href="/about/webmap.html">网站地图</a> |
+            <a href="http://www.mmonly.cc/mnzj.html" target="_blank" rel="nofollow">美女之家旧版本入口</a> | Copyright &copy; 2015-2020 MMONLY.CC. <a href="http://www.mmonly.cc/" title="唯一图库">唯一图库</a> |<script type="text/javascript">
+				Global_TongJi();
+				Global_TuAnd();
+				Global_PicBottom();
+				Global_NeiWen();
+			</script>
+  </div>
+</div>
+
+</body>
+</html>

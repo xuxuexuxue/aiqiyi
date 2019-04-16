@@ -1,878 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="shortcut icon"
-          href="http://www.qiyipic.com/common/images/logo.ico" type="image/icon"/>
-    <link rel="stylesheet" type="text/css"
-          href="/static/css/v3-basic_other.css"/>
-    <link href="/static/css/list_new.css"
-          rel="stylesheet" type="text/css">
-    <script type="text/javascript"
-            src="/static/js/sea1.2.js"></script>
-<link rel="stylesheet" type="text/css" href="/static/css/home.css" />
-<link href="/static/css/topnavcss.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="/static/js/jquery.min.js"></script>
-<script type="text/javascript" src="/static/js/Sindex_top.js"></script>
-<script type="text/javascript" src="/static/js/lrtk.js"></script>
+<!-- saved from url=(0046)http://47.93.248.15:81/iqiyiandmmoly/movielist -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Movielist</title>
+
 
 </head>
 <body>
-    <div class="topbox" name="top">
-    <div class="topw">
-        <div class="logo"><a href="/" title="唯一图库"><img src="/static/img/mmonly1.png" alt="唯一图库" height="60"/></a></div>
-        <div class="nav" id="SonNavBox">
-            <ul>
-                <li class="home this"><a href="/">首页</a></li>
-                <li><a href="categroy?categroy='mmtp'" title="美女图片">美女图片</a>
-                    <div class="SonNav">
-                        <a href="tagdetail?tag=dxmn" title="大胸美女">大胸美女</a><a
-                            href="tagdetail?tag=xgmn" title="性感美女">性感美女</a><a
-                            href="tagdetail?tag=twmn" title="台湾美女">台湾美女</a><a
-                            href="tagdetail?tag=rbmn" title="日本美女">日本美女</a><a
-                            href="tagdetail?tag=hxmn" title="混血美女">混血美女</a><a
-                            href="tagdetail?tag=zrmn" title="自然美女">自然美女</a><a
-                            href="tagdetail?tag=ommn" title="内衣美女">欧美美女</a></div>
-                </li>
-                <li><a href="tag" title="标签云">标签云</a></li>
-                <li><a href="movielist" title="iqiyi">爱奇艺电影</a></li>
-
-            </ul>
-        </div>
-    </div>
-</div>
-<script>NavListShow1();</script>
 
 <div class="page-list">
 		<div class="wrapper-content clearfix mb20">
 			<div class="site-main">
 				<!-- 分类 -->
 				<div class="mod_sear_menu mt20 mb30">
-					<div class="mod_sear_list" data-widget-expcol="expcol"
-						data-expcol-cls="mod_sear_list_open">
+					<div class="mod_sear_list" data-widget-expcol="expcol" data-expcol-cls="mod_sear_list_open">
 						<h3>频道：</h3>
 						<ul class="mod_category_item">
-							<li class="selected"><a href="/iqiyi/MovieListServlet">电影</a></li>
+							<li class="selected"><a href="/movielist/">电影</a></li>
 						</ul>
 					</div>
 					<!-- 查询参数表单 会在js中调用 -->
-					<form action="movielist" method="post" id="searchForm">
-						<input type="hidden" value="" name="diqu" id="diqu"/>
-						<input type="hidden" value="" name="leixing" id="leixing"/>
-						<input type="hidden" value="" name="guige" id="guige"/>
-						<input type="hidden" value="" name="niandai" id="niandai"/>
-					    <input type="hidden" value="1" name="currentPage" id="currentPage"/>
+					<form action="http://47.93.248.15:81/iqiyiandmmoly/movielist" method="post" id="searchForm">
+						<input type="hidden" value="" name="diqu" id="diqu">
+						<input type="hidden" value="" name="leixing" id="leixing">
+						<input type="hidden" value="" name="guige" id="guige">
+						<input type="hidden" value="" name="niandai" id="niandai">
+					    <input type="hidden" value="1" name="currentPage" id="currentPage">
                     </form>
 
 					<div class="mod_sear_list  mod_sear_list_open">
 						<h3>地区：</h3>
 						<ul class="mod_category_item">
-							<li class="selected">
-							<a href="javascript:;" onclick="searchMovie('diqu','',1);">全部</a>
-							</li>
+							<li class="{% if data.cat_id not in range(31,38) %}selected{% endif %}">
+							<a href="/movielist/?cid=28">全部</a>
+                            </li >
 							<!--地区分类-->
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('diqu','华语',1);">华语</a>
+                                {% for category in data.categories %}
+                                {% if category.categroy == "地区" %}
+
+                                <li class = "{% if category.title == data.title %}selected{% endif %}">
+                                    <a href="?cid={{category.numid}}" onclick="searchMovie(&#39;diqu&#39;,&#39;华语&#39;,1);">{{ category.title  }}</a>
                                 </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('diqu','美国',1);">美国</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('diqu','欧洲',1);">欧洲</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('diqu','韩国',1);">韩国</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('diqu','日本',1);">日本</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('diqu','泰国',1);">泰国</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('diqu','其它',1);">其它</a>
-                                </li>
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
+
+                                {% endif %}
+                                {% endfor %}
+
 						</ul>
 					</div>
-					<div class="mod_sear_list" data-widget-expcol="expcol"
-						data-expcol-cls="mod_sear_list_open">
+					<div class="mod_sear_list" data-widget-expcol="expcol" data-expcol-cls="mod_sear_list_open">
 						<h3>类型：</h3>
 						<ul class="mod_category_item">
-                            <li class="selected">
-                                <a href="javascript:;;" onclick="searchMovie('leixing','',1);">全部</a>
+                            <li class="{% if data.cat_id not in range(38,52) %}selected{% endif %}">
+                                <a href="/movielist/?cid=75">全部</a>
 							</li>
 							<!--类型分类-->
+                                {% for category in data.categories %}
+                                {% if category.categroy == "类型" %}
 
-							 
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('leixing','喜剧',1);">喜剧</a>
+                                <li class = "{% if category.title == data.title %}selected{% endif %}">
+                                    <a href="?cid={{category.numid}}" onclick="searchMovie(&#39;leixing&#39;,&#39;喜剧&#39;,1);">{{ category.title }}</a>
                                 </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('leixing','悲剧',1);">悲剧</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('leixing','爱情',1);">爱情</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('leixing','动作',1);">动作</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('leixing','枪战',1);">枪战</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('leixing','犯罪',1);">犯罪</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('leixing','惊悚',1);">惊悚</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('leixing','恐怖',1);">恐怖</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('leixing','悬疑',1);">悬疑</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('leixing','动画',1);">动画</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('leixing','家庭',1);">家庭</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('leixing','奇幻',1);">奇幻</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('leixing','魔幻',1);">魔幻</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('leixing','科幻',1);">科幻</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('leixing','战争',1);">战争</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('leixing','青春',1);">青春</a>
-                                </li>
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
 
-
-
+                                {% endif %}
+                                {% endfor %}
 						</ul>
-					</div>
+
+                    </div>
 					<div class="mod_sear_list  mod_sear_list_open">
 						<h3>规格：</h3>
 						<ul class="mod_category_item">
-							<li class="selected">
-                                <a href="javascript:;;" onclick="searchMovie('guige','',1);">全部</a>
+							<li class="{% if data.cat_id not in range(54,65) %}selected{% endif %}">
+                                <a href="/movielist/?cid=76">全部</a>
 							</li>
 							<!--规格分类-->
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('guige','巨制',1);">巨制</a>
+                                {% for category in data.categories %}
+                                {% if category.categroy == "规格" %}
+
+                                <li class = "{% if category.title == data.title %}selected{% endif %}">
+                                    <a href="?cid={{category.numid}}" onclick="searchMovie(&#39;guige&#39;,&#39;巨制&#39;,1);">{{ category.title }}</a>
                                 </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('guige','院线',1);">院线</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('guige','独播',1);">独播</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('guige','网络大电影',1);">网络大电影</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('guige','经典',1);">经典</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('guige','口碑佳片',1);">口碑佳片</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('guige','杜比',1);">杜比</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('guige','电影节目',1);">电影节目</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('guige','4K',1);">4K</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('guige','原声',1);">原声</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('guige','粤语',1);">粤语</a>
-                                </li>
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
+
+                                {% endif %}
+                                {% endfor %}
+
 						</ul>
 					</div>
 					<div class="mod_sear_list $lastCss">
 						<h3>我的年代：</h3>
 						<ul class="mod_category_item">
-							<li class="selected">
-                                <a href="javascript:;;" onclick="searchMovie('niandai','',1);">全部</a>
+							<li class="{% if data.cat_id not in range(65,74) %}selected{% endif %}">
+                                <a href="/movielist/?cid=65">全部</a>
 							</li>
 							<!--年代分类-->
-							
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('niandai','全部',1);">全部</a>
+
+                                {% for category in data.categories %}
+                                {% if category.categroy == "我的年代" %}
+
+                                <li class = "{% if category.title == data.title %}selected{% endif %}">
+                                    <a href="?cid={{category.numid}}" onclick="searchMovie(&#39;niandai&#39;,&#39;全部&#39;,1);">{{ category.title }}</a>
                                 </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('niandai','2018',1);">2018</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('niandai','2017',1);">2017</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('niandai','2016',1);">2016</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('niandai','2015-2011',1);">2015-2011</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('niandai','2010-2000',1);">2010-2000</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('niandai','90年代',1);">90年代</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('niandai','80年代',1);">80年代</a>
-                                </li>
-                                
-                            
-                                
-                                <li >
-                                    <a href="javascript:;" onclick="searchMovie('niandai','更早',1);">更早</a>
-                                </li>
-                                
-                            
+
+                                {% endif %}
+                                {% endfor %}
+
 						</ul>
 					</div>
 					<div class="mod_sear_list borNone pl70">
-						<h3>已选条件：</h3>
-                        
-                        
+						<h3>已选条件：{{ data.title }}</h3>
 
-                        
-						
+
+
+
+
 					</div>
 				</div>
             </div>
@@ -882,16 +121,15 @@
         <div class="wrapper-cols">
 					<div class="wrapper-piclist" data-widget-listviptip="listviptip">
 						<ul class="site-piclist site-piclist-180236 site-piclist-auto">
-                            
+
+                            {% for i in data.movies %}
 									<li>
 								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=810" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="聊斋新编之画皮新娘" title="聊斋新编之画皮新娘" src="/static/photo/3a641f092fa4090d2efe1e96a7f4d373.jpg" />
+									<a alt="111" title="11" href="/playmovie?id={{i.id}}" class="site-piclist_pic_link" target="_blank"> <img width="180" height="236" rseat="dsjp7" alt={{ i.moviename }} title={{ i.moivename }} src="/static{{i.saveImagePath}}">
 										<div class="wrapper-listTitle">
 											<div class="mod-listTitle">
 												<p class="viedo_rb">
-													<span class="icon-vInfo">01:30:00 </span>
+													<span class="icon-vInfo">{{i.time}}  </span>
 												</p>
 											</div>
 										</div>
@@ -899,930 +137,28 @@
 								</div>
 								<div class="site-piclist_info">
 									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">7.4</strong></span>
+										<span class="score"><strong class="num">{{i.score}} </strong></span>
 										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=810"
-												target="_blank">聊斋新编之画皮新娘</a>
+											<a title=" " href="/playmovie?id={{i.id}}" target="_blank">{{i.moviename}} </a>
 										</p>
 									</div>
 									<div class="role_info">
 										<em>主演:</em>
-                                        
+                                        {% if i.performer != '' %}
+                                            <em>
+											    <a href="/performerdetail?name={{i.performer}}" title="{{i.performer}}" target="_blank">{{i.performer}}</a>
+										    </em>
+                                        {% endif %}
 									</div>
 								</div>
 							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=811" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="丧尸屠城2" title="丧尸屠城2" src="/static/photo/a29e18c3dcffb4a28757a551215599e9.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:12:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">8.1</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=811"
-												target="_blank">丧尸屠城2</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=812" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="忠犬八公的故事" title="忠犬八公的故事" src="/static/photo/c7e37219108c0602d6fcd9891e24dd84.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:33:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">9.5</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=812"
-												target="_blank">忠犬八公的故事</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=813" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="前任2：备胎反击战" title="前任2：备胎反击战" src="/static/photo/b0fc1c4bdabe7bd564225543b32bec3d.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:54:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">7.1</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=813"
-												target="_blank">前任2：备胎反击战</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=814" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="前任的诱惑" title="前任的诱惑" src="/static/photo/028f9e5054d72d817549691bef14d260.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">
- </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">6.0</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=814"
-												target="_blank">前任的诱惑</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=815" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="道士出山3外星古墓（下）" title="道士出山3外星古墓（下）" src="/static/photo/e787b2847fa68b938f8bcbe83dbea461.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:00:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">6.5</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=815"
-												target="_blank">道士出山3外星古墓（下）</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=816" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="大话西游3" title="大话西游3" src="/static/photo/6f3155fe3df3b8eee10907f33c713e81.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:33:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">7.5</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=816"
-												target="_blank">大话西游3</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=818" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="情义无悔" title="情义无悔" src="/static/photo/00d9a6aa1461be852f591d2d6af86bb3.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:35:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">7.3</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=818"
-												target="_blank">情义无悔</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=819" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="虐心爱情故事之囚爱" title="虐心爱情故事之囚爱" src="/static/photo/d86db1f8a4f6de5ea9b145533b64cb98.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:27:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">6.1</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=819"
-												target="_blank">虐心爱情故事之囚爱</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=820" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="惊魂七夜" title="惊魂七夜" src="/static/photo/bed7df1d3e9368789292e5e22e9d85cc.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:31:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">7.1</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=820"
-												target="_blank">惊魂七夜</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=821" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="同桌的你" title="同桌的你" src="/static/photo/b5c8b5078413ae9ccb45c2c9af8c12b7.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:38:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">7.3</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=821"
-												target="_blank">同桌的你</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=822" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="微爱之渐入佳境" title="微爱之渐入佳境" src="/static/photo/4c865cc3557f9f4eac29287e4004dc2b.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">02:00:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">7.4</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=822"
-												target="_blank">微爱之渐入佳境</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=823" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="山炮进城2" title="山炮进城2" src="/static/photo/575ba0bc316207da6626653211100914.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">02:00:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">8.2</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=823"
-												target="_blank">山炮进城2</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=824" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="爱情与灵药" title="爱情与灵药" src="/static/photo/24d210a51f593a03f8eed0cea86292c7.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:53:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">7.8</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=824"
-												target="_blank">爱情与灵药</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=825" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="我的极品女神" title="我的极品女神" src="/static/photo/32c2e919f2482636ac3fb6ceeb59df67.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:30:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">8.5</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=825"
-												target="_blank">我的极品女神</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=826" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="伏妖·白鱼镇" title="伏妖·白鱼镇" src="/static/photo/b98ba6727f3cc97bc24e3e563e467db9.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">
- </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">7.9</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=826"
-												target="_blank">伏妖·白鱼镇</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=827" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="三生三世十里桃花" title="三生三世十里桃花" src="/static/photo/942ebdb5023266b14eb54590464c7ba5.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:52:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">7.2</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=827"
-												target="_blank">三生三世十里桃花</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=828" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="不可思异" title="不可思异" src="/static/photo/70d8532f41cf37d111306365ca8773bc.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">02:00:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">7.4</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=828"
-												target="_blank">不可思异</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=830" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="超级大山炮之海岛奇遇" title="超级大山炮之海岛奇遇" src="/static/photo/c0cbcafdf6b8f3166a6daaf5524eccf5.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">
- </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">8.0</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=830"
-												target="_blank">超级大山炮之海岛奇遇</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=831" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="老炮儿" title="老炮儿" src="/static/photo/2886876fcef682781ddcf12d11eee522.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">02:17:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">8.5</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=831"
-												target="_blank">老炮儿</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=832" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="虐心爱情故事之猎爱" title="虐心爱情故事之猎爱" src="/static/photo/d6f0412adba8759c4ac53172a2944163.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:37:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">7.6</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=832"
-												target="_blank">虐心爱情故事之猎爱</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=833" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="超级大山炮之夺宝奇兵" title="超级大山炮之夺宝奇兵" src="/static/photo/cdb3c5905fc596421cdfb22f5b93f59b.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">
- </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">8.1</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=833"
-												target="_blank">超级大山炮之夺宝奇兵</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=834" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="长城（普通话）" title="长城（普通话）" src="/static/photo/753b3240d6f47638b01cd1f64fd5890f.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:44:28 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">8.0</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=834"
-												target="_blank">长城（普通话）</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=835" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="闪光少女" title="闪光少女" src="/static/photo/e4954575eebac1e55c78e15883896bb3.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:40:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">8.3</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=835"
-												target="_blank">闪光少女</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=836" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="最后一个阴阳先生" title="最后一个阴阳先生" src="/static/photo/0e73e7a01fcc0f835ac9750832171846.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:03:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">6.8</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=836"
-												target="_blank">最后一个阴阳先生</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=837" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="恶棍天使" title="恶棍天使" src="/static/photo/256cf30c730af5bd5e9e52812578fa28.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">02:04:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">7.5</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=837"
-												target="_blank">恶棍天使</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=839" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="魔法老师" title="魔法老师" src="/static/photo/d2729affe4776e0230a649cf939ca892.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:25:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">7.8</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=839"
-												target="_blank">魔法老师</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=840" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="欢乐喜剧人" title="欢乐喜剧人" src="/static/photo/73669f5ad1889e31fa0b3b68074d2322.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:33:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">7.0</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=840"
-												target="_blank">欢乐喜剧人</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=841" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="了不起的菲丽西（普通话）" title="了不起的菲丽西（普通话）" src="/static/photo/052481833e1e9a9f9cd68182a758d12e.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:29:19 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">7.6</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=841"
-												target="_blank">了不起的菲丽西（普通话）</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
-									<li>
-								<div class="site-piclist_pic">
-									<a alt="111" title="11" href="playmovie?id=842" class="site-piclist_pic_link"
-										target="_blank"> <img width="180" height="236"
-										rseat="dsjp7" alt="恐龙当家" title="恐龙当家" src="/static/photo/7988fd53171846f67ae87600921fa13f.jpg" />
-										<div class="wrapper-listTitle">
-											<div class="mod-listTitle">
-												<p class="viedo_rb">
-													<span class="icon-vInfo">01:33:00 </span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="site-piclist_info">
-									<div class="mod-listTitle_left">
-										<span class="score"><strong class="num">8.2</strong></span>
-										<p class="site-piclist_info_title  movie-tit ">
-											<a
-												title=" "
-												href="playmovie?id=842"
-												target="_blank">恐龙当家</a>
-										</p>
-									</div>
-									<div class="role_info">
-										<em>主演:</em>
-                                        
-									</div>
-								</div>
-							</li>
-                            
+                            {% endfor %}
 						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+
 
 <!-- 修改页码-->
 
@@ -1830,60 +166,31 @@
 	<div data-ugcplayhistory-elem="pager" class="mod-page">
 		<div data-ugcplayhistory-elem="pager" class="mod-page">
 		<!-- 如果当前页是第一页的话，则上一页按钮无法点击 -->
-            
+            {% if data.current_page == "" or data.current_page <=1 %}
                 <span class="noPage">上一页</span>
-            
-        
+            {% endif %}
+        {% if data.current_page >1 %}
+            <a class="a1"
+				href="?cid={{data.cat_id}}&p={{data.current_page - 1 }}">上一页</a>
+        {% endif %}
             <!-- 页码 -->
-        
-            
-                <span class="curPage">1</span>
-            
-        
-            
-                <a title="跳转至${i}页 "href="javascript:;;" onclick="searchMovie('','',2)">2</a>
-            
-        
-            
-                <a title="跳转至${i}页 "href="javascript:;;" onclick="searchMovie('','',3)">3</a>
-            
-        
-            
-                <a title="跳转至${i}页 "href="javascript:;;" onclick="searchMovie('','',4)">4</a>
-            
-        
-            
-                <a title="跳转至${i}页 "href="javascript:;;" onclick="searchMovie('','',5)">5</a>
-            
-        
-            
-                <a title="跳转至${i}页 "href="javascript:;;" onclick="searchMovie('','',6)">6</a>
-            
-        
-            
-                <a title="跳转至${i}页 "href="javascript:;;" onclick="searchMovie('','',7)">7</a>
-            
-        
-            
-                <a title="跳转至${i}页 "href="javascript:;;" onclick="searchMovie('','',8)">8</a>
-            
-        
-            
-                <a title="跳转至${i}页 "href="javascript:;;" onclick="searchMovie('','',9)">9</a>
-            
-        
-            
-                <a title="跳转至${i}页 "href="javascript:;;" onclick="searchMovie('','',10)">10</a>
-            
-        
-            
-                <a title="跳转至${i}页 "href="javascript:;;" onclick="searchMovie('','',11)">11</a>
-            
-        
+
+        {% for p in data.paginate.iter_pages(1,1,3,1) %}
+                        {% if p %}
+                        {% if p == data.paginate.page %}
+                        <span class="curPage">{{p}}</span>
+                        {% else %}
+                           <a title="跳转至${p}页 " href="?cid={{data.cat_id}}&p={{ p }}">{{p}}</a>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+
         			 <!-- 如果当前页等于最大页码数，则下一页按钮无法点击 -->
-        
-            <a class="a1" title="跳转至2页 " href="javascript:;;" onclick="searchMovie('','',2)">下一页</a>
-        
+        {% if data.current_page >= data.total_page %}
+            <span class="noPage">下一页</span>
+        {% else %}
+            <a class="a1" href="?cid={{data.cat_id}}&p={{ data.current_page + 1 }}">下一页</a>
+        {% endif %}
 
 		</div>
 	</div>
@@ -1897,6 +204,19 @@
 
 
 <script type="text/javascript">
+    $(function () {
+         $('.mod_category_item li').click(function () {
+        // 遍历所有的 li 移除身上的选中效果
+        $('.mod_category_item li').each(function () {
+            $(this).removeClass('selected')
+        })
+        // 给当前分类添加选中的状态
+        $(this).addClass('selected')
+        // 如果点击的分类与当前分类不一致
+
+    })
+    })
+
 function searchMovie(paramName,paramValue,currentPage){
 	//paramName = diqu
 	//paramValue = 美国
@@ -1912,5 +232,5 @@ function searchMovie(paramName,paramValue,currentPage){
 }
 </script>
             <div>
-</body>
-</html>
+
+</div><a href="http://47.93.248.15:81/iqiyiandmmoly/movielist#" id="retop" style="left: 1326.5px;">���ض���</a></body></html>

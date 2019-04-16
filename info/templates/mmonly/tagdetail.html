@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{{data.tag.title}}  美女图片大全-唯一图库</title>
+<link rel="stylesheet" type="text/css" href="../../static/css/index.css" />
+<link href="../../static/css/topnavcss.css" rel="stylesheet"
+	type="text/css" />
+<script type="text/javascript" src="../../static/js/jquery.min.js"></script></head>
+<body
+	style="background: url({{ data.tag.imagePath }}) no-repeat center 72px;">
+    {% include 'mmonly/header.html' %}
+
+{#	<script type="text/javascript"#}
+{#		src="MyPictureSource/js/lrtk.js"></script>#}
+	<div class="Clbc_Game">
+		<div class="position_tag">
+			当前位置：<a href="/">唯一图库</a> > <a
+				href="tag">标签</a> > <a
+				href="/tagdetail?tag={{data.tag.tag}}">
+				{{data.tag.title}}</a>
+		</div>
+		<div class="TagTopBox">
+			<div class="TagInfo">
+				<div class="TagTxt">
+					<h1>
+						<a href="/tagdetail?tag={{data.tag.tag}}"
+							style="color: #fff !important;"
+							title={{data.tag.title}}>
+							{{data.tag.title}}
+						</a>
+					</h1>
+					<p>{{data.tag.tagdes}}</p>
+
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="hr10"></div>
+			<div class="TagMoreList" style="width: 100%;">
+				<h2>推荐标签</h2>
+                    {% for tagmodel in data.rec %}
+                        <a href="/tagdetail?tag={{tagmodel.tag}}"
+						title="{{tagmodel.title}}" class="over">{{tagmodel.title}}</a>
+                    {% endfor %}
+			</div>
+			<div class="hr10"></div>
+		</div>
+        <div class="Clbc_Game_l_a" style="width: 100%;">
+			<div class="item_list infinite_scroll masonry" id="infinite_scroll">
+			<!-- 	循环添加内容-->
+                {% for i in  data.source  %}
+					<div class="item masonry_brick masonry-brick">
+						<div class="item_t">
+							<div class="img">
+								<div class="ABox">
+									<a target="_blank"
+									href="/picdetail?myGroupId={{i.mygroupid}}">
+									<img
+									width="234" alt="{{i.photodes}}"
+									src="{{i.headerimagepath}}"></a>
+								</div>
+								<div class="btns">
+									<a class="img_album_btn"
+										href="/picdetail?myGroupId={{i.mygroupid}}"> 查看：<span>92</span></a>
+								</div>
+							</div>
+						</div>
+						<div class="item_b clearfix">
+							<div class="title">
+								<span><a target="_blank"
+									href="/picdetail?myGroupId={{i.mygroupid}}">{{i.photodes}}</a></span>
+							</div>
+{#							<!—其中<div class="items_comment">标签内容不做修改，后续在进行修改—>#}
+							<div class="items_comment">
+								<a href="https://www.mmonly.cc/mmtp/" title="美女图片">美女图片</a> - <a
+									href="https://www.mmonly.cc/mmtp/xgmn/" title="性感美女">性感美女</a>
+							</div>
+							<div class="items_likes">DATE:{{i.creatertime}}</div>
+						</div>
+					</div>
+                {% endfor %}
+			</div>
+		</div>
+		<div class="w960AD">
+			<div class="hr10"></div>
+			<div class="hr10"></div>
+		</div>
+        <div class="wrappic">
+			<div class="pages">
+				<ul>
+					<li>
+						<a href="/tagdetail?tag={{data.tag.tag}}">首页</a>
+					</li>
+                    {% if data.current_page >1%}
+                        <li><a href="/tagdetail?p={{data.current_page - 1}}&tag={{data.tag.tag}}">
+							上一页
+							</a>
+						</li>
+                    {% endif %}
+
+
+					{% for p in data.paginate.iter_pages(1,1,3,1) %}
+                        {% if p %}
+                        {% if p == data.paginate.page %}
+                        <li class="thisclass"><a>{{p}}</a></li>
+                        {% else %}
+                            <li><a href="/tagdetail?p={{p}}&tag={{ data.tag.tag }}">{{p}}</a></li>
+                        {% endif %}
+                        {% endif %}
+                    {% endfor %}
+
+
+                    <!-- 遍历页码结束 -->
+                    {% if data.current_page < data.total_page %}
+                        <li><a href="/tagdetail?p={{data.current_page + 1}}&tag={{ data.tag.tag }}">下一页</a></li>
+                    {% endif %}
+				</ul>
+			</div>
+		</div>
+	<div class="bottom"></div>
+</div>
+</body>
+</html>

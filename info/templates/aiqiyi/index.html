@@ -1,11 +1,269 @@
 <!DOCTYPE html>
-<html>
-<head>
+<!-- saved from url=(0046)http://47.93.248.15:81/iqiyiandmmoly/movielist -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Title</title>
+    <link rel="shortcut icon" href="http://www.qiyipic.com/common/images/logo.ico" type="image/icon">
+    <link rel="stylesheet" type="text/css" href="../../static/css/v3-basic_other.css">
+    <link href="../../static/css/index_list.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../../static/js/sea1.2.js"></script>
+<link rel="stylesheet" type="text/css" href="../../static/movie/css/home.css">
+<link href="../../static/css/topnavcss.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../../static/js/jquery.min.js"></script><script type="text/javascript" src="./Title_files/mmonlyPC.js.下载"></script>
+<script type="text/javascript" src="../../static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../static/js/Sindex_top.js"></script>
+<script type="text/javascript" src="../../static/js/lrtk.js"></script>
 
 </head>
-<body >
-hello
+<body>
+    <div class="topbox" name="top">
+    <div class="topw">
+        <div class="logo"><a href="/" title="唯一图库"><img src="../../static/movie/images/mmonly1.png" alt="唯一图库" height="60"></a></div>
+        <div class="nav" id="SonNavBox">
+            <ul>
+                <li class="home this"><a href="/">首页</a></li>
+                <li><a href="/" title="美女图片">美女图片</a>
+                    <div class="SonNav">
+                        <a href="/tagdetail?tag=dxmn" title="大胸美女">大胸美女</a><a
+                            href="/tagdetail?tag=xgmn" title="性感美女">性感美女</a><a
+                            href="/tagdetail?tag=twmn" title="台湾美女">台湾美女</a><a
+                            href="/tagdetail?tag=rbmn" title="日本美女">日本美女</a><a
+                            href="/tagdetail?tag=hxmn" title="混血美女">混血美女</a><a
+                            href="/tagdetail?tag=zrmn" title="自然美女">自然美女</a><a
+                            href="/tagdetail?tag=ommn" title="内衣美女">欧美美女</a></div>
+                </li>
+                <li><a href="/tag" title="标签云">标签云</a></li>
+                <li><a href="/movielist" title="iqiyi">爱奇艺电影</a></li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<script>NavListShow1();</script>
+
+<div class="page-list">
+		<div class="wrapper-content clearfix mb20">
+			<div class="site-main">
+				<!-- 分类 -->
+				<div class="mod_sear_menu mt20 mb30">
+					<div class="mod_sear_list" data-widget-expcol="expcol" data-expcol-cls="mod_sear_list_open">
+						<h3>频道：</h3>
+						<ul class="mod_category_item">
+							<li class="selected"><a href="/movielist/">电影</a></li>
+						</ul>
+					</div>
+					<!-- 查询参数表单 会在js中调用 -->
+					<form action="http://47.93.248.15:81/iqiyiandmmoly/movielist" method="post" id="searchForm">
+						<input type="hidden" value="" name="diqu" id="diqu">
+						<input type="hidden" value="" name="leixing" id="leixing">
+						<input type="hidden" value="" name="guige" id="guige">
+						<input type="hidden" value="" name="niandai" id="niandai">
+					    <input type="hidden" value="1" name="currentPage" id="currentPage">
+                    </form>
+
+					<div class="mod_sear_list  mod_sear_list_open">
+						<h3>地区：</h3>
+						<ul class="mod_category_item">
+							<li class="{% if data.cat_id not in range(31,38) %}selected{% endif %}">
+							<a href="/movielist/?cid=28">全部</a>
+                            </li >
+							<!--地区分类-->
+                                {% for category in data.categories %}
+                                {% if category.categroy == "地区" %}
+
+                                <li class = "{% if category.title == data.title %}selected{% endif %}">
+                                    <a href="?cid={{category.numid}}" onclick="searchMovie(&#39;diqu&#39;,&#39;华语&#39;,1);">{{ category.title  }}</a>
+                                </li>
+
+                                {% endif %}
+                                {% endfor %}
+
+						</ul>
+					</div>
+					<div class="mod_sear_list" data-widget-expcol="expcol" data-expcol-cls="mod_sear_list_open">
+						<h3>类型：</h3>
+						<ul class="mod_category_item">
+                            <li class="{% if data.cat_id not in range(38,52) %}selected{% endif %}">
+                                <a href="/movielist/?cid=75">全部</a>
+							</li>
+							<!--类型分类-->
+                                {% for category in data.categories %}
+                                {% if category.categroy == "类型" %}
+
+                                <li class = "{% if category.title == data.title %}selected{% endif %}">
+                                    <a href="?cid={{category.numid}}" onclick="searchMovie(&#39;leixing&#39;,&#39;喜剧&#39;,1);">{{ category.title }}</a>
+                                </li>
+
+                                {% endif %}
+                                {% endfor %}
+						</ul>
+
+                    </div>
+					<div class="mod_sear_list  mod_sear_list_open">
+						<h3>规格：</h3>
+						<ul class="mod_category_item">
+							<li class="{% if data.cat_id not in range(54,65) %}selected{% endif %}">
+                                <a href="/movielist/?cid=76">全部</a>
+							</li>
+							<!--规格分类-->
+                                {% for category in data.categories %}
+                                {% if category.categroy == "规格" %}
+
+                                <li class = "{% if category.title == data.title %}selected{% endif %}">
+                                    <a href="?cid={{category.numid}}" onclick="searchMovie(&#39;guige&#39;,&#39;巨制&#39;,1);">{{ category.title }}</a>
+                                </li>
+
+                                {% endif %}
+                                {% endfor %}
+
+						</ul>
+					</div>
+					<div class="mod_sear_list $lastCss">
+						<h3>我的年代：</h3>
+						<ul class="mod_category_item">
+							<li class="{% if data.cat_id not in range(65,74) %}selected{% endif %}">
+                                <a href="/movielist/?cid=65">全部</a>
+							</li>
+							<!--年代分类-->
+
+                                {% for category in data.categories %}
+                                {% if category.categroy == "我的年代" %}
+
+                                <li class = "{% if category.title == data.title %}selected{% endif %}">
+                                    <a href="?cid={{category.numid}}" onclick="searchMovie(&#39;niandai&#39;,&#39;全部&#39;,1);">{{ category.title }}</a>
+                                </li>
+
+                                {% endif %}
+                                {% endfor %}
+
+						</ul>
+					</div>
+					<div class="mod_sear_list borNone pl70">
+						<h3>已选条件：{{ data.title }}</h3>
 
 
-</body>
-</html>
+
+
+
+					</div>
+				</div>
+            </div>
+				<!-- 分类 end-->
+
+
+        <div class="wrapper-cols">
+					<div class="wrapper-piclist" data-widget-listviptip="listviptip">
+						<ul class="site-piclist site-piclist-180236 site-piclist-auto">
+
+                            {% for i in data.movies %}
+									<li>
+								<div class="site-piclist_pic">
+									<a alt="111" title="11" href="/playmovie?id={{i.id}}" class="site-piclist_pic_link" target="_blank"> <img width="180" height="236" rseat="dsjp7" alt={{ i.moviename }} title={{ i.moivename }} src="/static{{i.saveImagePath}}">
+										<div class="wrapper-listTitle">
+											<div class="mod-listTitle">
+												<p class="viedo_rb">
+													<span class="icon-vInfo">{{i.time}}  </span>
+												</p>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="site-piclist_info">
+									<div class="mod-listTitle_left">
+										<span class="score"><strong class="num">{{i.score}} </strong></span>
+										<p class="site-piclist_info_title  movie-tit ">
+											<a title=" " href="/playmovie?id={{i.id}}" target="_blank">{{i.moviename}} </a>
+										</p>
+									</div>
+									<div class="role_info">
+										<em>主演:</em>
+                                        {% if i.performer != '' %}
+                                            <em>
+											    <a href="/performerdetail?name={{i.performer}}" title="{{i.performer}}" target="_blank">{{i.performer}}</a>
+										    </em>
+                                        {% endif %}
+									</div>
+								</div>
+							</li>
+                            {% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+<!-- 修改页码-->
+
+<!-- 页码 开始 -->
+	<div data-ugcplayhistory-elem="pager" class="mod-page">
+		<div data-ugcplayhistory-elem="pager" class="mod-page">
+		<!-- 如果当前页是第一页的话，则上一页按钮无法点击 -->
+            {% if data.current_page == "" or data.current_page <=1 %}
+                <span class="noPage">上一页</span>
+            {% endif %}
+        {% if data.current_page >1 %}
+            <a class="a1"
+				href="?cid={{data.cat_id}}&p={{data.current_page - 1 }}">上一页</a>
+        {% endif %}
+            <!-- 页码 -->
+
+        {% for p in data.paginate.iter_pages(1,1,3,1) %}
+                        {% if p %}
+                        {% if p == data.paginate.page %}
+                        <span class="curPage">{{p}}</span>
+                        {% else %}
+                           <a title="跳转至${p}页 " href="?cid={{data.cat_id}}&p={{ p }}">{{p}}</a>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+
+        			 <!-- 如果当前页等于最大页码数，则下一页按钮无法点击 -->
+        {% if data.current_page >= data.total_page %}
+            <span class="noPage">下一页</span>
+        {% else %}
+            <a class="a1" href="?cid={{data.cat_id}}&p={{ data.current_page + 1 }}">下一页</a>
+        {% endif %}
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    $(function () {
+         $('.mod_category_item li').click(function () {
+        // 遍历所有的 li 移除身上的选中效果
+        $('.mod_category_item li').each(function () {
+            $(this).removeClass('selected')
+        })
+        // 给当前分类添加选中的状态
+        $(this).addClass('selected')
+        // 如果点击的分类与当前分类不一致
+
+    })
+    })
+
+function searchMovie(paramName,paramValue,currentPage){
+	//paramName = diqu
+	//paramValue = 美国
+	//根据ID获取元素，并且将元素的value赋值
+	//获取id为diqu的元素 将该元素的value属性设置为美国
+	if(paramName !=''){
+		document.getElementById(paramName).value = paramValue;
+	}
+	//设置页码
+	document.getElementById("currentPage").value = currentPage;
+	//将表单提交
+	document.getElementById("searchForm").submit();
+}
+</script>
+            <div>
+
+</div><a href="http://47.93.248.15:81/iqiyiandmmoly/movielist#" id="retop" style="left: 1326.5px;">���ض���</a></body></html>

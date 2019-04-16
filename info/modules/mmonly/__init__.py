@@ -2,7 +2,7 @@
 from flask import Blueprint
 
 # 1.初始化蓝图对象
-index_blu = Blueprint("index",__name__)
+mmonly_blu = Blueprint("mmonly",__name__)
 
 from . import views
 

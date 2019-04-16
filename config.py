@@ -15,7 +15,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = "mysql://root:mysql@127.0.0.1:3306/aiqiyi_movie"
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
-    # redis配置
+    # redis配置movietable
     REDIS_HOST = "127.0.0.1"
     REDIS_PORT = 6379
 

@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>【唯一图库】主要分享美女图片大全,唯美图片大全以及风景图片大全等</title>
+<link rel="stylesheet" type="text/css" href="../../static/mmonly/css/home.css" />
+<link href="../../static/mmonly/css/topnavcss.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../static/mmonly/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../static/mmonly/js/Sindex_top.js"></script>
+<script type="text/javascript" src="../../static/mmonly/js/lrtk.js"></script>
+</head>
+<body class="index">
+
+	<!-- 导入头部文件 -->
+    {% include 'mmonly/header.html' %}
+
+		<div class="imain">
+			<div class="hr10"></div>
+			<div class="title-a">
+				<strong>图库最新推荐</strong>
+			</div>
+			<div class="pic-list mb7">
+				<ul>
+                    {% for item in data.random_li %}
+<li>
+						<div class="picbox">
+							<a target="_blank"
+								href="/picdetail?myGroupId={{ item.mygroupid}}"><img
+								src={{ item.headerimagepath }}
+								alt={{ item.photodes }} /></a>
+						</div>
+						<p class="name">
+							<a target="_blank"
+								href="/picdetail?myGroupId={{ item.mygroupid}}"
+								title={{ item.photodes }}>{{ item.photodes }}</a>
+						</p>
+						<div class="PicInfos">
+							<p class="l IcoEye">128</p>
+							<p class="r">
+								<a href="/tagdetail?tag={{ item.tag }}" title="{{ item.tagdes }}"
+									target="_blank">{{ item.tagdes }}</a>
+							</p>
+						</div>
+					</li>
+                    {% endfor %}
+				</ul>
+			</div>
+            {% for tag in data.random_tag %}
+            <div class="title-a">
+				<strong><a href="/tagdetail?tag={{ tag.tag }}" title={{ tag.tagdes }}
+					target="_blank" rel="nofollow">{{ tag.tagdes }}</a></strong> <em><a
+					href="/tagdetail?tag={{ tag.tag}}" target="_blank" title="更多{{ tag.tagdes }}">更多>></a></em>
+			</div>
+
+			<div class="pic-list mb7">
+				<ul class="mb7">
+                    {% for item in data.random_source %}
+                    <li>
+                            <div class="picbox">
+							<a target="_blank"
+								href="/picdetail?myGroupId={{ item.mygroupid }}"><img
+								src={{ item.headerimagepath }}
+								alt={{ item.photodes }} /></a>
+						</div>
+						<p class="name">
+							<a target="_blank"
+								href="/picdetail?myGroupId={{ item.mygroupid }}"
+								title="{{ item.photodes }}">{{ item.photodes }}</a>
+						</p>
+						<div class="PicInfos">
+							<p class="l IcoEye">{{ item.size }}</p>
+							<p class="r">
+								<a href="/tagdetail?tag={{ item.tag }}" title="{{ item.tagdes }}"
+									target="_blank">{{ item.tagdes }}</a>
+							</p>
+						</div>
+                    </li>
+
+
+                    {% endfor %}
+				</ul>
+
+
+			</div>
+			<div class="hr20"></div>
+
+
+            {% endfor %}
+            
+
+
+		</div>
+</body>
+</html>

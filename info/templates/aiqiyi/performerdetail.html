@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+
+    <title>{{data.name}}资料页</title>
+    <link rel="shortcut icon" href="http://www.qiyipic.com/common/images/logo.ico" type="image/icon"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+          href="http://www.qiyipic.com/common/fix/pad_images/touch_icon_movieLib_114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57"
+          href="http://www.qiyipic.com/common/fix/pad_images/touch_icon_movieLib_57.png">
+
+    <script type="text/javascript" src="../../static/js/sea1.2.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../static/css/movieLib-base.css"/>
+    <link type="text/css" rel="stylesheet" href="../../static/css/mmovieLib_star-v1.css"/>
+</head>
+<body class="qypage-980">
+<!-- 主体内容 -->
+<div class="wrapper-content">
+    <!-- 面包屑导航 -->
+    <div class="site-main">
+        <div class="mod-crumb">
+            <div class="crumb-item">
+						<span class="fl"> <a href="http://127.0.0.1:5000/movielist/"
+                                             title="首页">首页</a> <em>&gt;&nbsp;</em>
+						</span> <span class="fl"><strong>{{data.name}}</strong></span>
+            </div>
+        </div>
+    </div>
+    <!-- 面包屑导航 结束-->
+    <div class="site-main clearfix">
+        <div class="site-main-outer">
+            <div class="site-main-inner site-main-inner-300">
+                <!-- 大头部 -->
+                <div class="mod_search_topic mb20">
+                    <div class="mod_reuslt clearfix"
+                         data-widget-follow="followvolume">
+                        <div class="result_pic">
+                            <a href="javascript:void(0);" title={{data.name}}
+                               rseat="star_name">
+                                <img width="195" height="260" src={{data.image}}
+                                     rseat="star_img"/>
+                            </a>
+                        </div>
+                        <div class="result_detail">
+                            <h1 class="main_title">
+                                <a href="javascript:void(0);" title="{{data.name}}"
+                                   rseat="star_cn">{{data.name}}</a>
+                                <span rseat="star_en">{{data.e_name}}</span>
+                            </h1>
+                            <div class="mx_topic-item pt20">
+                                <ul class="clearfix">
+                                    <li rseat="职业">{{  data.occupation}}</li>
+                                    <li rseat="生日">{{data.birthday}}</li>
+                                    <li rseat="地区">地区：{{data.address}}</li>
+                                    <li rseat="身高">身高：{{data.height}}</li>
+                                    <li rseat="体重">体重：{{data.weight}}</li>
+                                    <li rseat="血型">血型：{{data.bloodtype}}</li>
+                                </ul>
+                            </div>
+                            <div class="mx_detail">
+                                <p>
+                                    {{data.des}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- 二级TAB -->
+                <div data-widget-movlbtab="movlbtab"
+                     data-movlbtab-noremovechild="true" data-movlbtab-title={{data.name}}
+                     data-movlbtab-id="215003205">
+                    <div class="mod-tab clearfix">
+                        <ul class="tab-normal">
+                            <!-- 当前 class="selected" -->
+                            <li data-elem="tabtitle" data-mt-tab="info" class="selected">
+                                <qchunk
+                                        id="block-G" data-pb="r=二级导航资料"><a
+                                        href="javascript:void(0);">资料</a></qchunk>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mod-tab-body">
+                        <!-- 资料 -->
+                        <div data-elem="tabbody"
+                             style="display: block; min-height: 460px">
+                            <!-- 资料内容 -->
+                            <div class="tabbody-inner">
+                                <div class="mx_introduce-info"
+                                     data-widget-movlbshowmore="movlbshowmore">
+                                    <p data-movlbshowmore-ele="part">
+                                        {{data.des}}
+                                    </p>
+                                </div>
+                                <div class="table-list">
+                                    <table class="table-list-1">
+                                        <tr>
+                                            <td class="td-small">外文名</td>
+                                            <td>{{data.e_name}}</td>
+                                            <td class="td-small">别名</td>
+                                            <td>{{data.alias}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-small">性别</td>
+                                            <td>{{data.sex}}</td>
+                                            <td class="td-small">血型</td>
+                                            <td>{{data.bloodtype}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-small">身高</td>
+                                            <td>{{data.height}}</td>
+                                            <td class="td-small">地区</td>
+                                            <td>{{data.address}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-small">出生日期</td>
+                                            <td>{{data.birthday}}</td>
+                                            <td class="td-small">星座</td>
+                                            <td>{{data.constellation}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-small">出生地</td>
+                                            <td>{{data.location}}</td>
+                                            <td class="td-small">现居地</td>
+                                            <td>{{data.location}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-small">毕业院校</td>
+                                            <td>{{data.school}}</td>
+                                            <td class="td-small">经纪公司</td>
+                                            <td>{{data.brokerageAgency}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-small">成名年代</td>
+                                            <td>{{data.fameyear}}</td>
+                                            <td class="td-small">爱好</td>
+                                            <td>{{data.hobby}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--end-->
+</div>
+<div data-vlibplayhistory-client="pc"></div>
+</body>
+</html>

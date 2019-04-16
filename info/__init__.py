@@ -48,7 +48,14 @@ def create_app(config_name):
 
 
     # 注册蓝图到app上
-    from info.modules.index import index_blu
+    from info.modules.aiqiyi import index_blu
     app.register_blueprint(index_blu)
+
+    # 注册蓝图到app上
+    from info.modules.mmonly import mmonly_blu
+
+    app.register_blueprint(mmonly_blu)
+
+
 
     return app
